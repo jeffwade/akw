@@ -1,3 +1,3 @@
 # akw
 
-Processing sketches by my 8yo daughter.
+Processing sketches by (and for) my eldest daughter.
