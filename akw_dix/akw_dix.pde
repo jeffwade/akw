@@ -9,6 +9,9 @@ PFont utility, headline;
 //Colors
 color black, white, red, orange, yellow, green, teal, blue, violet;
 
+// Headlines
+String[] headline = {"Ha", "ppy", "bir", "thda", "y, A", "lex!!", "!"};
+
 //Vectors
 PVector center, cornerUL, cornerUR, cornerBR, cornerBL ;
 ArrayList<PVector> corners = new ArrayList<PVector>();
@@ -38,7 +41,7 @@ void setup() {
 
 void draw() {
   background(white);
-  // globalTimer(corners.get(0));
+  // startGlobalTimer(corners.get(0));
 
   if ( !isPlaying ) {
     runButtons();
