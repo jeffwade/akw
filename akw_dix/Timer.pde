@@ -1,20 +1,20 @@
 class Timer {
   int ID;
-  int tIn;
-  int tOut;
+  int tIN;
+  int tOUT;
   int duration = -1;
   boolean isRunning;
   PVector position = new PVector(width/2, height/2);
 
   Timer() {
-    tIn = millis();
-    ID = tIn;
+    this.tIN = millis();
+    ID = this.tIN;
     isRunning = true;
   }
 
   Timer(int _id) {
     ID = _id;
-    tIn = millis();
+    this.tIN = millis();
     isRunning = true;
   }
 
@@ -25,9 +25,9 @@ class Timer {
 
   void update() {
     if ( isRunning ) {
-      duration = millis() - tIn;
+      duration = millis() - this.tIN;
     } else {
-       duration = tOut - tIn;
+       duration = this.tOUT - this.tIN;
     }
 
   }
@@ -42,12 +42,23 @@ class Timer {
   }
 
   void stop(){
-    tOut = millis();
+    this.tOUT = millis();
     isRunning = false;
   }
 
-  int duration(){
-    return tOut - tIn;
+  int getIN() {
+    return this.tIN;
+  }
+
+  int getOUT() {
+    return this.tOUT;
+  }
+
+  int getDuration(){
+    return this.tOUT - this.tIN;
+  }
+  void setPosition(PVector _pos) {
+    position =  _pos.copy();
   }
 
   void setPosition(float _x, float _y) {

@@ -1,4 +1,4 @@
-class Button {
+class PushButton {
   PVector btnCenter, btnIn, btnOut;
   int btnHue, btnSaturation, btnValue;
   color btnColor;
@@ -7,7 +7,7 @@ class Button {
   int btnID = -1;
   int currentSegment;
 
-  Button() {
+  PushButton() {
     btnCenter = new PVector(width/2, height/2);
     btnIn = new PVector(btnCenter.x + btnDepth, btnCenter.y + btnDepth);
     btnOut = new PVector(btnCenter.x - btnDepth, btnCenter.y - btnDepth);
@@ -18,7 +18,7 @@ class Button {
     btnRadius = 100;
   }
 
-  Button(int _hue, int _sat, int _val, PVector _center) {
+  PushButton(int _hue, int _sat, int _val, PVector _center) {
     btnCenter = _center.copy();
     btnIn = btnCenter.copy().add(btnDepth, btnDepth);
     btnOut = btnCenter.copy().add(-btnDepth/2, -btnDepth/2);
@@ -28,7 +28,7 @@ class Button {
     btnColor = color(btnHue, btnSaturation, btnValue);
   }
 
-  Button(int _id, color _c, PVector _center) {
+  PushButton(int _id, color _c, PVector _center) {
     btnCenter = _center.copy();
     btnIn = btnCenter.copy().add(btnDepth, btnDepth);
     btnOut = btnCenter.copy().add(-btnDepth/2, -btnDepth/2);
@@ -75,7 +75,7 @@ class Button {
         // stroke(150);
         ellipse(_x, _y, btnRadius, btnRadius);
         noStroke();
-        // Button shadow
+        // PushButton shadow
         int inOff = 2;
         for ( int i = 1; i < btnRadius - inOff; i++ ) {
           fill(btnHue, btnSaturation - 10, btnValue - 50, 1);
@@ -110,9 +110,6 @@ class Button {
     PVector _center = btnCenter.copy();
     float d = PVector.dist(mouse, _center);
     if ( d < btnRadius ) {
-      // if ( mousePressed ) {
-      //   println(getID());
-      // }
       return true;
     } else {
        return false;
@@ -123,11 +120,17 @@ class Button {
     Segment s = new Segment(btnColor);
     segments.add(s);
     currentSegment = s.getID();
-    println(currentSegment);
   }
 
   void mouseReleased() {
-    println(currentSegment);
+    int lastSegment = segments.size() - 1;
+    segments.get(lastSegment).stopRecording();
+    for ( Segment s : segments ) {
+      if ( s.getID() == currentSegment ) {
+        s.stopRecording();
+        // println(s);
+      }
+    }
   }
 
     int getID() {
