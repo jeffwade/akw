@@ -6,7 +6,7 @@ void mousePressed() {
   }
 
   if ( resetControl.isMouseInside() && !segments.isEmpty() ) {
-    println("reset");
+    // println("reset");
     // toggle playing status when you click the play control
     if ( isPlaying ) {
       isPlaying = !isPlaying;
@@ -21,10 +21,10 @@ void mousePressed() {
     // toggle playing status when you click the play control
     isPlaying = !isPlaying;
     if ( !isPlaying ) {
-      println("stop");
+      // println("stop");
       playControl.setLabel("play");
     } else {
-      println("play");
+      // println("play");
       playControl.setLabel("stop");
     }
     playControl.toggle();
