@@ -58,6 +58,9 @@ class Segment {
     return this.segColor;
   }
 
+  int getDuration() {
+    return this.segTimer.getDuration();
+  }
 
   void setWidth(float _w) {
     this.w = _w;
@@ -68,7 +71,7 @@ class Segment {
     return "Segment ID: " + this.getID() 
       + "; tIN: " + this.segTimer.getIN()
       + "; tOUT: " + this.segTimer.getOUT()
-      + "; Duration: " + this.segTimer.getDuration()
+      + "; Duration: " + this.getDuration()
       + "; Color: " + this.getColor();
   }
 }

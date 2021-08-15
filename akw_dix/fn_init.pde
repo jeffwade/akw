@@ -29,7 +29,7 @@ void init() {
   utility = loadFont("Arial.vlw");
 
   // Display font
-  headline = loadFont("Sansita-Black.vlw");
+  headlineFont = loadFont("Sansita-Black.vlw");
   textAlign(CENTER, CENTER);
 
 
@@ -80,7 +80,7 @@ void init() {
   }
 
   // Initialize timer
-  timer = new Timer();
+  globalTimer = new Timer();
 
   // Initialize controls
   playControl = new Control("play", new PVector(width - 90, 40));

@@ -4,13 +4,16 @@
 // Global Variables
 // ------------------
 // Fonts
-PFont utility, headline;
+//
+// import java.awt.Robot;
+// Robot robot = new Robot();
+PFont utility, headlineFont;
 
 //Colors
 color black, white, red, orange, yellow, green, teal, blue, violet;
 
 // Headlines
-String[] headline = {"Ha", "ppy", "bir", "thda", "y, A", "lex!!", "!"};
+String[] headlines = {"Ha", "ppy", "bir", "thda", "y, A", "lex!!", "!"};
 
 //Vectors
 PVector center, cornerUL, cornerUR, cornerBR, cornerBL ;
@@ -22,18 +25,30 @@ Control playControl;
 Control resetControl;
 ArrayList<PushButton> pushButtons = new ArrayList<PushButton>();
 
-// Global timer
-Timer timer;
+// Timers
+Timer globalTimer;
+Timer playTimer;
 
 // Timeline
 ArrayList<Segment> segments = new ArrayList<Segment>();
+IntList segmentTimes = new IntList();
 
 // Booleans
 boolean isPlaying = false;
 
 // Values
 int barHeight = 160;
+int t = -1;
+int tStart = 0;
+int tTotal = 0;
+int tNext;
+int playtime = 0;
+int segmentCount = -1;
+int headlineCount = -1;
+int modulus = 1;
 
+// APPLICATION
+// -----------
 void setup() {
   size(900,900);
   init();
@@ -45,19 +60,28 @@ void draw() {
 
   if ( !isPlaying ) {
     runButtons();
-    push();
-      fill(black, 20);
-      noStroke();
-      rectMode(CORNERS);
-      rect(0, height - barHeight, width, height);
-    pop();
+    runSegments(isPlaying);
+  } else {
+     play();
   }
 
-  runSegments(isPlaying);
   if ( !segments.isEmpty() ) {
-    playControl.run();
-    resetControl.run();
+    if ( isPlaying ) {
+      if ( mouseY > 100 ) {
+      } else {
+        playControl.run();
+        resetControl.run();
+      }
+    } else {
+      playControl.run();
+      resetControl.run();
+    }
   } else {
      showInstructions();
   }
+  // if(playTimer != null) {
+  //   playTimer.setPosition(60, height - 100);
+  //   playTimer.run();
+  // }
+  
 }

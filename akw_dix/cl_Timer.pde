@@ -54,9 +54,18 @@ class Timer {
     return this.tOUT;
   }
 
-  int getDuration(){
-    return this.tOUT - this.tIN;
+  int getElapsed() {
+    return millis() - this.tIN;
   }
+
+  int getDuration(){
+    if ( this.isRunning ) {
+      return getElapsed();
+    } else {
+      return this.tOUT - this.tIN;
+    }
+  }
+
   void setPosition(PVector _pos) {
     position =  _pos.copy();
   }
