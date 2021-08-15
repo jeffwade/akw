@@ -40,7 +40,7 @@ boolean isPlaying = false;
 int barHeight = 160;
 int t = -1;
 int tStart = 0;
-int tTotal = 0;
+int tTotal = 1;
 int tNext;
 int playtime = 0;
 int segmentCount = -1;

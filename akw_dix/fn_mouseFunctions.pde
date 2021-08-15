@@ -40,7 +40,7 @@ void mousePressed() {
     segments.clear();
     segmentTimes.clear();
     playControl.setLabel("play");
-    tTotal = 0;
+    tTotal = 1;
     t = -1;
     playTimer = null;
     segmentCount = -1;
@@ -55,6 +55,9 @@ void mouseReleased() {
       b.mouseReleased();
       Segment s = segments.get(segments.size() - 1);
       int d = s.getDuration();
+      if ( tTotal == 1 ) {
+        tTotal = 0;
+      }
       tTotal += d;
       segmentTimes.append(d);
       // println(segmentTimes);

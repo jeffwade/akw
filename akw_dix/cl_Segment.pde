@@ -22,11 +22,23 @@ class Segment {
 
   void update() {
     this.segTimer.update();
-    int t = this.segTimer.getDuration();
+    if ( !this.isPlaying ) {
+      float _t = this.getDuration();
+      float _w = map(_t, 0, tTotal, 0, width);
+      this.setWidth(_w);
+      int tBefore = 0;
+      for ( int i = 0; i < this.getID(); i++ ) {
+        tBefore += segments.get(i).getDuration();
+      }
+      int _x = (int) map(tBefore, 0, tTotal, 0, width);
+      this.setStartPoint(_x);
+    }
+    
+
     if ( mousePressed ) {
       // print(t);
     }
-    this.startX = this.segID * w;
+    // this.startX = this.segID * w;
     // todo:
     // dynamically resize segments based on relative length
   }
@@ -60,6 +72,18 @@ class Segment {
 
   int getDuration() {
     return this.segTimer.getDuration();
+  }
+
+  float getWidth() {
+    return this.w;
+  }
+
+  float getStartPoint() {
+    return startX;
+  }
+
+  void setStartPoint(int _s) {
+    this.startX = _s;
   }
 
   void setWidth(float _w) {

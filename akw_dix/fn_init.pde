@@ -3,7 +3,7 @@ void init() {
   // Initialize colors
   colorMode(HSB, 360, 100, 100);
   black = color(0, 0, 0);
-  white = color(0, 0, 100);
+  white = color(192, 4, 98);
   color[] bw = {black, white};
   // println("black: " + bw[0]);
   // println("white: " + bw[1]);
