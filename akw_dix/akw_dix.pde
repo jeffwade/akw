@@ -51,6 +51,7 @@ int modulus = 1;
 // -----------
 void setup() {
   size(900,900);
+  // fullScreen();
   init();
 }
 
@@ -63,6 +64,8 @@ void draw() {
     runSegments(isPlaying);
   } else {
      play();
+     runSegments(!isPlaying);
+     showMarker();
   }
 
   if ( !segments.isEmpty() ) {

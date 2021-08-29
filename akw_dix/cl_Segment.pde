@@ -33,14 +33,6 @@ class Segment {
       int _x = (int) map(tBefore, 0, tTotal, 0, width);
       this.setStartPoint(_x);
     }
-    
-
-    if ( mousePressed ) {
-      // print(t);
-    }
-    // this.startX = this.segID * w;
-    // todo:
-    // dynamically resize segments based on relative length
   }
 
   void stopRecording() {
@@ -51,6 +43,12 @@ class Segment {
     if ( this.isPlaying ) {
       push();
         background(this.segColor);
+      pop();
+      push();
+        rectMode(CORNER);
+        fill(this.segColor);
+        noStroke();
+        rect(this.startX, height - this.h, w, this.h);
       pop();
     } else {
       push();
@@ -78,16 +76,24 @@ class Segment {
     return this.w;
   }
 
+  void setWidth(float _w) {
+    this.w = _w;
+  }
+
+  float getHeight() {
+    return this.h;
+  }
+
+  void setHeight(float _h) {
+    this.h = _h;
+  }
+
   float getStartPoint() {
     return startX;
   }
 
   void setStartPoint(int _s) {
     this.startX = _s;
-  }
-
-  void setWidth(float _w) {
-    this.w = _w;
   }
 
   @Override
